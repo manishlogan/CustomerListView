@@ -26,6 +26,10 @@
             android:name="com.logan.basicapp.SearchByNumber"
             android:label="@string/title_activity_search_by_number" >
         </activity>
+        <activity
+            android:name="com.logan.basicapp.FeedbackActivity"
+            android:label="@string/title_activity_feedback" >
+        </activity>
     </application>
 
 </manifest>

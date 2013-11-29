@@ -1,5 +1,7 @@
 package com.logan.basicapp;
 
+import org.apache.http.protocol.HTTP;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,7 +29,12 @@ public class MainActivity extends Activity {
 	}
 	
 	public void feedback(View view){
-		
+		Intent emailIntent = new Intent(Intent.ACTION_SEND);
+		emailIntent.setType(HTTP.PLAIN_TEXT_TYPE);
+		emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"jon@example.com"}); // recipients
+		emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Email subject");
+		emailIntent.putExtra(Intent.EXTRA_TEXT, "My Own Text");
+		startActivity(emailIntent);
 	}
 
 }

@@ -7,6 +7,8 @@
     <string name="search_by_number">Search By Bus Number</string>
     <string name="feedback">Feedback</string>
     <string name="title_activity_search_by_number">Search By Bus Number</string>
-	<string name="enter_bus_no">Enter Bus Number</string>
-	<string name="search">Search</string>
+    <string name="enter_bus_no">Enter Bus Number</string>
+    <string name="search">Search</string>
+    <string name="title_activity_feedback">FeedbackActivity</string>
+
 </resources>
