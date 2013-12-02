@@ -1,19 +1,46 @@
 package com.logan.basicapp;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+import java.util.Map;
+
 import org.apache.http.protocol.HTTP;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
 public class MainActivity extends Activity {
 
+	private MainActivity activity;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		activity = this;
+		
+		Thread t = new Thread(){
+			@Override
+			public void run() {
+				AssetManager manager = activity.getAssets();
+				try {
+					InputStream is = manager.open("busStops.txt");
+					ObjectInputStream ois = new ObjectInputStream(is);
+					ApplicationUtility.data = (Map<String, ArrayList<String>>)ois.readObject();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		t.start();
 	}
 
 	@Override
