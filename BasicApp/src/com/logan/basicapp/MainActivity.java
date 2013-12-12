@@ -30,6 +30,8 @@ public class MainActivity extends Activity {
 			public void run() {
 				AssetManager manager = activity.getAssets();
 				try {
+					System.out.println("Thread started");
+					DataSource source = new DataSource(activity);
 					InputStream is = manager.open("busStops.txt");
 					ObjectInputStream ois = new ObjectInputStream(is);
 					ApplicationUtility.data = (Map<String, ArrayList<String>>)ois.readObject();
